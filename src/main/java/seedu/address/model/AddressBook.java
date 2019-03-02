@@ -91,6 +91,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Adds an expense to the expense book.
+     */
+    public void addExpense(Expense expense) {
+        expenses.add(expense);
+        indicateModified();
+    }
+
+    /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.

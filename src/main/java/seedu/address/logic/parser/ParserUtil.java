@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.epiggy.item.Price;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -48,6 +49,25 @@ public class ParserUtil {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code Name}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static seedu.address.model.epiggy.item.Name parseItemName(String name) {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        return new seedu.address.model.epiggy.item.Name(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code Name}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static Price parseCost(String cost) {
+        requireNonNull(cost);
+        return new Price(Integer.parseInt(cost.trim()));
     }
 
     /**

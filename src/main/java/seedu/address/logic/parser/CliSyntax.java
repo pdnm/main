@@ -5,7 +5,6 @@ package seedu.address.logic.parser;
  */
 public class CliSyntax {
 
-    // TODO: remove unused prefix.
     /* Prefix definitions */
     public static final Prefix PREFIX_NAME = new Prefix("n/");
     public static final Prefix PREFIX_PHONE = new Prefix("p/");
