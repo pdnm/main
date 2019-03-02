@@ -19,7 +19,7 @@ public class AddExpenseCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an expense to the expense book. ";
 
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
+    public static final String MESSAGE_SUCCESS = "New expense added: %1$s";
 
     private final Expense toAdd;
 

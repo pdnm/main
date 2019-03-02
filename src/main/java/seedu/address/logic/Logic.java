@@ -9,6 +9,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.epiggy.Expense;
 import seedu.address.model.person.Person;
 
 /**
@@ -33,6 +34,9 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
+
+    /** Returns an unmodifiable view of the filtered list of persons */
+    ObservableList<Expense> getFilteredExpenseList();
 
     /**
      * Returns an unmodifiable view of the list of commands entered by the user.
@@ -64,9 +68,24 @@ public interface Logic {
     ReadOnlyProperty<Person> selectedPersonProperty();
 
     /**
+     * Selected expense in the filtered expense list.
+     * null if no expense is selected.
+     *
+     * @see seedu.address.model.Model#selectedExpenseProperty()
+     */
+    ReadOnlyProperty<Expense> selectedExpenseProperty();
+
+    /**
      * Sets the selected person in the filtered person list.
      *
      * @see seedu.address.model.Model#setSelectedPerson(Person)
      */
     void setSelectedPerson(Person person);
+
+    /**
+     * Sets the selected expense in the filtered person list.
+     *
+     * @see seedu.address.model.Model#setSelectedExpense(Expense)
+     */
+    void setSelectedExpense(Expense expense);
 }

@@ -16,4 +16,12 @@ public class Expense {
         this.item = item;
         this.date = date;
     }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public Date getDate() {
+        return date;
+    }
 }

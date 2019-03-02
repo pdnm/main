@@ -88,6 +88,10 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
 
+    /** Returns an unmodifiable view of the filtered expense list */
+    ObservableList<Expense> getFilteredExpenseList();
+
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
@@ -126,6 +130,12 @@ public interface Model {
     ReadOnlyProperty<Person> selectedPersonProperty();
 
     /**
+     * Selected person in the filtered person list.
+     * null if no person is selected.
+     */
+    ReadOnlyProperty<Expense> selectedExpenseProperty();
+
+    /**
      * Returns the selected person in the filtered person list.
      * null if no person is selected.
      */
@@ -135,4 +145,9 @@ public interface Model {
      * Sets the selected person in the filtered person list.
      */
     void setSelectedPerson(Person person);
+
+    /**
+     * Sets the selected expense in the filtered expense list.
+     */
+    void setSelectedExpense(Expense expense);
 }

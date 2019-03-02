@@ -18,4 +18,16 @@ public class Item {
         this.price = price;
         this.tags = tags;
     }
+
+    public Name getName() {
+        return name;
+    }
+
+    public Price getPrice() {
+        return price;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
 }
