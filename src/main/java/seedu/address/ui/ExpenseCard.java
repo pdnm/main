@@ -1,5 +1,8 @@
 package seedu.address.ui;
 
+import java.text.SimpleDateFormat;
+import java.util.logging.Logger;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -7,9 +10,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.epiggy.Expense;
-
-import java.text.SimpleDateFormat;
-import java.util.logging.Logger;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -20,7 +20,7 @@ public class ExpenseCard extends UiPart<Region> {
 
     private static final String FXML = "ExpenseListCard.fxml";
     private static final String[] TAG_COLOR_STYLES =
-            { "turquoise", "orange", "yellow", "green", "black", "blue", "beige", "pink", "white", "grey" };
+        { "turquoise", "orange", "yellow", "green", "black", "blue", "beige", "pink", "white", "grey" };
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -47,8 +47,6 @@ public class ExpenseCard extends UiPart<Region> {
 
     public ExpenseCard(Expense expense, int displayedIndex) {
         super(FXML);
-
-        if (expense == null) logger.info("WTF null expense ???");
 
         this.expense = expense;
         id.setText(displayedIndex + ". ");

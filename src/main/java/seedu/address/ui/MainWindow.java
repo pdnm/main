@@ -116,7 +116,7 @@ public class MainWindow extends UiPart<Stage> {
 
 
         expenseListPanel = new ExpenseListPanel(logic.getFilteredExpenseList(), logic.selectedExpenseProperty(),
-                expense -> {});
+            expense -> {}); //TODO
         personListPanelPlaceholder.getChildren().add(expenseListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
