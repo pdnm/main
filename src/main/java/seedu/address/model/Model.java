@@ -111,9 +111,10 @@ public interface Model {
     void deleteBudgetAtIndex(int index);
 
     /**
-     * Deletes the expense at the specific index.
+     * Deletes the expense {@code toDelete}.
+     * @param toDelete the expense to be deleted.
      */
-    void deleteExpenseAtIndex(int index);
+    void deleteExpense(Expense toDelete);
 
     /**
      * Replaces the given expense {@code target} with {@code editedExpense}.

@@ -182,11 +182,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Deletes the expense at the specific index.
-     * @param index of the to be deleted budget.
+     * Deletes the expense {@code toDelete}.
+     * @param toDelete the expense to be deleted.
      */
-    public void deleteExpenseAtIndex(int index) {
-        expenses.remove(index);
+    public void deleteExpense(Expense toDelete) {
+        expenses.remove(toDelete);
         indicateModified();
     }
 

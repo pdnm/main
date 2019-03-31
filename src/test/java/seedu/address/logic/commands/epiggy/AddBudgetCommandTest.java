@@ -213,7 +213,7 @@ public class AddBudgetCommandTest {
         }
 
         @Override
-        public void deleteExpenseAtIndex(int index) {
+        public void deleteExpense(Expense toDelete) {
             throw new AssertionError("This method should not be called.");
         }
 
