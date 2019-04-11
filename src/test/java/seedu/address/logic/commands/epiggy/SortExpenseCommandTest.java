@@ -55,7 +55,7 @@ public class SortExpenseCommandTest {
         SortExpenseCommand command = new SortExpenseCommand(new CompareExpenseByDate());
         command.execute(model, null);
         expectedModel.sortExpenses(new CompareExpenseByDate());
-        assertEquals(Arrays.asList(MOVIE_AVENGERS, KFC, DUMPLING_SOUP, IPHONE, STATIONARY, CLOTHES, KARAOKE, BOWLING),
+        assertEquals(Arrays.asList(MOVIE_AVENGERS, KFC, STATIONARY, DUMPLING_SOUP, IPHONE, CLOTHES, KARAOKE, BOWLING),
                 model.getFilteredExpenseList());
     }
 }

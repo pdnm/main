@@ -35,10 +35,10 @@ public class TypicalReports {
             .withTags(VALID_TAG_FOOD, "lunch").build();
     public static final Expense STATIONARY = new ExpensesBuilder().withName("Stationary")
             .withCost("3.00")
-            .withDate("04/07/2019")
+            .withDate("07/04/2019")
             .withTags("school", "misc").build();
     public static final Expense MOVIE_AVENGERS = new ExpensesBuilder().withName("Avengers : Endgame movie")
-            .withDate("04/26/2019")
+            .withDate("26/04/2019")
             .withCost("8.50")
             .withTags("movie", "entertainment", VALID_TAG_FRIENDS).build();
     public static final Expense KARAOKE = new ExpensesBuilder().withName("Karaoke: KTV")
@@ -49,7 +49,7 @@ public class TypicalReports {
             .withCost("50.80")
             .withTags("shopping").build();
     public static final Expense KFC = new ExpensesBuilder().withName("KFC")
-            .withDate("04/26/2019")
+            .withDate("26/04/2019")
             .withCost("13.95")
             .withTags(VALID_TAG_FOOD, "dinner").build();
     public static final String KEYWORD_MATCHING_STATIONARY = "Stationary";

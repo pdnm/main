@@ -28,7 +28,7 @@ public class TypicalExpenses {
             .withTags(VALID_TAG_FOOD, "lunch", VALID_TAG_EXPENSE).build();
     public static final Expense STATIONARY = new ExpensesBuilder().withName("Stationary")
             .withCost("3.00")
-            .withDate("03/06/2019")
+            .withDate("06/03/2019")
             .withTags("school", "misc", VALID_TAG_EXPENSE).build();
     public static final Expense MOVIE_AVENGERS = new ExpensesBuilder().withName("Avengers Endgame movie")
             .withDate("26/04/2019")
