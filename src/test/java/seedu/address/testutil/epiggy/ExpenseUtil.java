@@ -5,7 +5,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.text.SimpleDateFormat;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import seedu.address.logic.commands.epiggy.AddExpenseCommand;
 import seedu.address.logic.commands.epiggy.EditExpenseCommand.EditExpenseDescriptor;
@@ -32,12 +34,44 @@ public class ExpenseUtil {
      * Returns the part of command string for the given {@code expense}'s details.
      */
     public static String getExpenseDetails(Expense expense) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_NAME + expense.getItem().getName().toString() + " ");
-        sb.append(PREFIX_COST + expense.getItem().getCost().toString() + " ");
-        sb.append(PREFIX_DATE + expense.getDate().toString() + " ");
-        expense.getItem().getTags().stream().forEach(s -> sb.append(PREFIX_TAG + s.tagName + " "));
-        return sb.toString();
+        String details = "";
+        details += descExpenseName(expense) + " ";
+        details += descExpenseCost(expense) + " ";
+        details += descExpenseDate(expense) + " ";
+        details += descExpenseTags(expense);
+        return details;
+    }
+
+    /**
+     * Return the command's name parameter for expense.
+     */
+    public static String descExpenseName(Expense expense) {
+        return PREFIX_NAME + expense.getItem().getName().name;
+    }
+
+    /**
+     * Return the command's cost parameter for expense.
+     */
+    public static String descExpenseCost(Expense expense) {
+        return String.format("%s%.2f", PREFIX_COST, expense.getItem().getCost().getAmount());
+    }
+
+
+    /**
+     * Return the command's date parameter for expense.
+     */
+    public static String descExpenseDate(Expense expense) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        return PREFIX_DATE + formatter.format(expense.getDate());
+    }
+
+    /**
+     * Return the command's date parameter for expense.
+     */
+    public static String descExpenseTags(Expense expense) {
+        return expense.getItem().getTags().stream()
+                .map(tag -> PREFIX_TAG + tag.tagName)
+                .collect(Collectors.joining(" "));
     }
 
     /**

@@ -6,6 +6,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_2018;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_2019;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOWLING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_IPHONE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_EXPENSE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FOOD;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIENDS;
 
@@ -24,26 +25,26 @@ public class TypicalExpenses {
     public static final Expense DUMPLING_SOUP = new ExpensesBuilder().withName("Dumpling Soup")
             .withCost("5.00")
             .withDate(VALID_DATE_2019)
-            .withTags(VALID_TAG_FOOD, "lunch").build();
+            .withTags(VALID_TAG_FOOD, "lunch", VALID_TAG_EXPENSE).build();
     public static final Expense STATIONARY = new ExpensesBuilder().withName("Stationary")
             .withCost("3.00")
             .withDate("03/06/2019")
-            .withTags("school", "misc").build();
-    public static final Expense MOVIE_AVENGERS = new ExpensesBuilder().withName("Avengers : Endgame movie")
-            .withDate("04/26/2019")
+            .withTags("school", "misc", VALID_TAG_EXPENSE).build();
+    public static final Expense MOVIE_AVENGERS = new ExpensesBuilder().withName("Avengers Endgame movie")
+            .withDate("26/04/2019")
             .withCost("8.50")
-            .withTags("movie", "entertainment", VALID_TAG_FRIENDS).build();
-    public static final Expense KARAOKE = new ExpensesBuilder().withName("Karaoke: KTV")
+            .withTags("movie", "entertainment", VALID_TAG_FRIENDS, VALID_TAG_EXPENSE).build();
+    public static final Expense KARAOKE = new ExpensesBuilder().withName("Karaoke KTV")
             .withCost("10.00")
             .withDate(VALID_DATE_2018)
-            .withTags(VALID_TAG_FRIENDS).build();
+            .withTags(VALID_TAG_FRIENDS, VALID_TAG_EXPENSE).build();
     public static final Expense CLOTHES = new ExpensesBuilder().withName("Clothes shopping")
             .withCost("21.80")
-            .withTags("shopping").build();
+            .withTags("shopping", VALID_TAG_EXPENSE).build();
     public static final Expense KFC = new ExpensesBuilder().withName("KFC")
-            .withDate("04/26/2019")
+            .withDate("26/04/2019")
             .withCost("13.00")
-            .withTags(VALID_TAG_FOOD, "dinner").build();
+            .withTags(VALID_TAG_FOOD, "dinner", VALID_TAG_EXPENSE).build();
 
     // Manually added
     public static final Expense BOWLING =

@@ -65,7 +65,7 @@ public class CommandTestUtil {
     public static final String VALID_TAG_FOOD = "food";
     public static final String VALID_TAG_FRIENDS = "friends";
     public static final String VALID_DATE_2018 = "10/07/2018";
-    public static final String VALID_DATE_2019 = "03/20/2019";
+    public static final String VALID_DATE_2019 = "20/03/2019";
     public static final String VALID_NAME_BOWLING = "bowling at West Bowl centre";
     public static final String VALID_COST_BOWLING = "4.80";
     public static final String VALID_NAME_IPHONE = "IPhone XR from challenger";
