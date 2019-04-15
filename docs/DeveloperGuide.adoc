@@ -901,7 +901,7 @@ to do this.
 ===== Current Implementation
 
 The undo/redo mechanism is facilitated by `VersionedEPiggy`.
-It extends `ePiggy` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`.
+It extends `ePiggy` with an undo/redo history, stored internally as an `ePiggyStateList` and `currentStatePointer`.
 Additionally, it implements the following operations:
 
 * `VersionedEPiggy#commit()` -- Saves the current ePiggy state in its history.
@@ -916,16 +916,16 @@ Step 1. The user launches the application for the first time. The `VersionedEPig
 
 image::UndoRedoStartingStateListDiagram.png[width="800"]
 
-Step 2. The user executes `deleteExpense 5` command to delete the 5th expense in the ePiggy. The `deleteExpense` command calls `Model#commitEPiggy()`, causing the modified state of the ePiggy after the `deleteExpense 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted ePiggy state.
+Step 2. The user executes `de 5` command to delete the 5th expense in the ePiggy. The `de` command calls `Model#commitEPiggy()`, causing the modified state of the ePiggy after the `de 5` command executes to be saved in the `ePiggyStateList`, and the `currentStatePointer` is shifted to the newly inserted ePiggy state.
 
 image::UndoRedoNewCommand1StateListDiagram.png[width="800"]
 
-Step 3. The user executes `add n/David ...` to add a new expense. The `add` command also calls `Model#commitEPiggy()`, causing another modified ePiggy state to be saved into the `addressBookStateList`.
+Step 3. The user executes `ae n/chick ...` to add a new expense. The `ae` command also calls `Model#commitEPiggy()`, causing another modified ePiggy state to be saved into the `ePiggyStateList`.
 
 image::UndoRedoNewCommand2StateListDiagram.png[width="800"]
 
 [NOTE]
-If a command fails its execution, it will not call `Model#commitEPiggy()`, so the ePiggy state will not be saved into the `addressBookStateList`.
+If a command fails its execution, it will not call `Model#commitEPiggy()`, so the ePiggy state will not be saved into the `ePiggyStateList`.
 
 Step 4. The user now decides that adding the expense was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoEPiggy()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous ePiggy state, and restores the ePiggy to that state.
 
@@ -941,13 +941,13 @@ image::UndoRedoSequenceDiagram.png[width="800"]
 The `redo` command does the opposite -- it calls `Model#redoEPiggy()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the ePiggy to that state.
 
 [NOTE]
-If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest ePiggy state, then there are no undone ePiggy states to restore. The `redo` command uses `Model#canRedoEPiggy()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the `currentStatePointer` is at index `ePiggyStateList.size() - 1`, pointing to the latest ePiggy state, then there are no undone ePiggy states to restore. The `redo` command uses `Model#canRedoEPiggy()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the ePiggy, such as `list`, will usually not call `Model#commitEPiggy()`, `Model#undoEPiggy()` or `Model#redoEPiggy()`. Thus, the `addressBookStateList` remains unchanged.
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the ePiggy, such as `list`, will usually not call `Model#commitEPiggy()`, `Model#undoEPiggy()` or `Model#redoEPiggy()`. Thus, the `ePiggyStateList` remains unchanged.
 
 image::UndoRedoNewCommand3StateListDiagram.png[width="800"]
 
-Step 6. The user executes `clear`, which calls `Model#commitEPiggy()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all ePiggy states after the `currentStatePointer` will be purged. We designed it this way because it no longer makes sense to redo the `add n/David ...` command. This is the behavior that most modern desktop applications follow.
+Step 6. The user executes `clear`, which calls `Model#commitEPiggy()`. Since the `currentStatePointer` is not pointing at the end of the `ePiggyStateList`, all ePiggy states after the `currentStatePointer` will be purged. We designed it this way because it no longer makes sense to redo the `ae n/chick ...` command. This is the behavior that most modern desktop applications follow.
 
 image::UndoRedoNewCommand4StateListDiagram.png[width="800"]
 
